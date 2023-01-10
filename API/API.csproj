@@ -9,18 +9,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.0.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.0"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.0.0"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.0.0"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.0.0"/>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.117"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0"/>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj"/>
   </ItemGroup>
 </Project>

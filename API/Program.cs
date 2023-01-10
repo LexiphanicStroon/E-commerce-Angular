@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Data.SQLite;
 using Microsoft.Extensions.DependencyInjection;
 using Core.Interfaces;
+using AutoMapper;
+using API.Helpers;
+
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
@@ -14,7 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StoreContext>(x => x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
-
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 var app = builder.Build();
 
