@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +32,9 @@ namespace API.Controllers
         public async Task<ActionResult<List<Product>>> GetProducts() 
         {
 
-            var products = await _productsRepo.ListAllASync();
+            var spec = new ProductsWithTypesAndBrandsSpecification();
+
+            var products = await _productsRepo.ListAsync(spec);
 
             return Ok(products);
         }
