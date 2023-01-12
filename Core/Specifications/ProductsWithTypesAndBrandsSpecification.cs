@@ -12,6 +12,7 @@ namespace Core.Specifications
         {
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
+            AddOrderBy(x => x.Name);
         }
 
         public ProductsWithTypesAndBrandsSpecification(int id) 
