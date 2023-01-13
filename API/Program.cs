@@ -22,9 +22,12 @@ builder.Services.AddDbContext<StoreContext>(x => x.UseSqlite(builder.Configurati
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 builder.Services.AddCors(opt =>
 {
-    opt.AddPolicy("CorsPolicy", policy =>
+    opt.AddPolicy(MyAllowSpecificOrigins, policy =>
     {
         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
     });
@@ -80,7 +83,7 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseCors("CorsPolicy");
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
