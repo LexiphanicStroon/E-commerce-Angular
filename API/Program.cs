@@ -21,12 +21,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StoreContext>(x => x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddSingleton<ConnectionMultiplexer>(c => {
-    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),
-    true);
-    return ConnectionMultiplexer.Connect(configuration);
+// builder.Services.AddSingleton<ConnectionMultiplexer>(c => {
+//     var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),
+//     true);
+//     return ConnectionMultiplexer.Connect(configuration);
     
-});
+// });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
