@@ -9,6 +9,7 @@ using API.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using API.Errors;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -19,8 +20,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StoreContext>(x => x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddSingleton<ConnectionMultiplexer>(c => {
+    var configuration = ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),
+    true);
+    return ConnectionMultiplexer.Connect(configuration);
+    
+});
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
